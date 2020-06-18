@@ -1,0 +1,39 @@
+* Changelog for init.el file
+
+
+** Additional layers
+- org
+- csv
+- git
+- markdown
+- python
+- yaml
+
+** Additional packages
+   dotspacemacs-additional-packages '(keychain-environment)
+
+** Default font
+   ;; Default font, or prioritized list of fonts.
+   ;; `powerline-scale' allows to quickly tweak the mode-line size to make
+   ;; separators look not too crappy.
+   dotspacemacs-default-font '("DejaVu Sans Mono"
+                               :size 18
+                               :weight normal
+                               :width normal
+                               :powerline-scale 1.1)
+
+** User config 
+(defun dotspacemacs/user-config ()
+  "Configuration for user code:
+This function is called at the very end of Spacemacs startup, after layer
+configuration.
+Put your configuration code here, except for variables that should be set
+before packages are loaded."
+
+  (add-hook 'org-mode-hook #'visual-line-mode)
+  (add-hook 'text-mode-hook #'visual-line-mode)
+
+  (setq org-use-speed-commands t)
+
+  )
+;; end dotspacemacs/user-config
