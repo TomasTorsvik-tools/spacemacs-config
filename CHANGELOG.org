@@ -10,12 +10,12 @@
 - yaml
 
 *** Additional packages
-  #+begin_quote
+  #+begin_src 
   dotspacemacs-additional-packages '(keychain-environment)
-  #+end_quote
+  #+end_src
 
 *** Default font
-  #+begin_quote
+  #+begin_src
   ;; Default font, or prioritized list of fonts.
   ;; `powerline-scale' allows to quickly tweak the mode-line size to make
   ;; separators look not too crappy.
@@ -24,10 +24,10 @@
                               :weight normal
                               :width normal
                               :powerline-scale 1.1)
-  #+end_quote
+  #+end_src
 
 *** User config 
-  #+begin_quote
+  #+begin_src
   (defun dotspacemacs/user-config ()
     "Configuration for user code:
   This function is called at the very end of Spacemacs startup, after layer
@@ -46,7 +46,7 @@
 
     )
   ;; end dotspacemacs/user-config
-  #+end_quote
+  #+end_src
 
 
 ** Use tramp + magit for remote servers
