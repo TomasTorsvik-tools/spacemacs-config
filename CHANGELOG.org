@@ -10,37 +10,43 @@
 - yaml
 
 *** Additional packages
-   dotspacemacs-additional-packages '(keychain-environment)
+  #+begin_quote
+  dotspacemacs-additional-packages '(keychain-environment)
+  #+end_quote
 
 *** Default font
-   ;; Default font, or prioritized list of fonts.
-   ;; `powerline-scale' allows to quickly tweak the mode-line size to make
-   ;; separators look not too crappy.
-   dotspacemacs-default-font '("DejaVu Sans Mono"
-                               :size 18
-                               :weight normal
-                               :width normal
-                               :powerline-scale 1.1)
+  #+begin_quote
+  ;; Default font, or prioritized list of fonts.
+  ;; `powerline-scale' allows to quickly tweak the mode-line size to make
+  ;; separators look not too crappy.
+  dotspacemacs-default-font '("DejaVu Sans Mono"
+                              :size 18
+                              :weight normal
+                              :width normal
+                              :powerline-scale 1.1)
+  #+end_quote
 
 *** User config 
-(defun dotspacemacs/user-config ()
-  "Configuration for user code:
-This function is called at the very end of Spacemacs startup, after layer
-configuration.
-Put your configuration code here, except for variables that should be set
-before packages are loaded."
+  #+begin_quote
+  (defun dotspacemacs/user-config ()
+    "Configuration for user code:
+  This function is called at the very end of Spacemacs startup, after layer
+  configuration.
+  Put your configuration code here, except for variables that should be set
+  before packages are loaded."
 
-  (add-hook 'org-mode-hook #'visual-line-mode)
-  (add-hook 'text-mode-hook #'visual-line-mode)
+    (add-hook 'org-mode-hook #'visual-line-mode)
+    (add-hook 'text-mode-hook #'visual-line-mode)
 
-  (setq org-use-speed-commands t)
+    (setq org-use-speed-commands t)
 
-  ;; Set path to git on remote servers, by executing .profile
-  (require 'tramp)
-  (add-to-list 'tramp-remote-path 'tramp-own-remote-path)
+    ;; Set path to git on remote servers, by executing .profile
+    (require 'tramp)
+    (add-to-list 'tramp-remote-path 'tramp-own-remote-path)
 
-  )
-;; end dotspacemacs/user-config
+    )
+  ;; end dotspacemacs/user-config
+  #+end_quote
 
 
 ** Use tramp + magit for remote servers
