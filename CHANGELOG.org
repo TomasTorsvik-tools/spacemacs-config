@@ -1,7 +1,7 @@
 * Changelog for init.el file
 
-
-** Additional layers
+** Main changes in init.el file compared to .spacemacs.template
+*** Additional layers
 - org
 - csv
 - git
@@ -9,10 +9,10 @@
 - python
 - yaml
 
-** Additional packages
+*** Additional packages
    dotspacemacs-additional-packages '(keychain-environment)
 
-** Default font
+*** Default font
    ;; Default font, or prioritized list of fonts.
    ;; `powerline-scale' allows to quickly tweak the mode-line size to make
    ;; separators look not too crappy.
@@ -22,7 +22,7 @@
                                :width normal
                                :powerline-scale 1.1)
 
-** User config 
+*** User config 
 (defun dotspacemacs/user-config ()
   "Configuration for user code:
 This function is called at the very end of Spacemacs startup, after layer
@@ -35,5 +35,33 @@ before packages are loaded."
 
   (setq org-use-speed-commands t)
 
+  ;; Set path to git on remote servers, by executing .profile
+  (require 'tramp)
+  (add-to-list 'tramp-remote-path 'tramp-own-remote-path)
+
   )
 ;; end dotspacemacs/user-config
+
+
+** Use tramp + magit for remote servers
+*magit* will sometimes complain about old version of *git* on remote servers. Often these servers only include updated versions of *git* in modules, i.e. you should do 
+#+begin_quote
+  module load <git module>
+#+end_quote
+to get an update version, whereas the default version can be outdated. In order to use *magit* with an updated version of *git*, the path to the updated version should be made availabel for *tramp*. A relatively easy way to do this is to load the latest *git* module in the **~/.profile** file on the remote server, and make sure that *tramp* use it's own remote path on the server. This is the reason for the entry in the user-config:
+#+begin_quote
+  (require 'tramp)
+  (add-to-list 'tramp-remote-path 'tramp-own-remote-path)
+#+end_quote
+
+
+** Enable link to running keychain and ssh-agent forwarding
+In XFCE the desktop environment will run a keychain in the background at login. Emacs can connect to this keychain by doing
+#+begin_quote
+   dotspacemacs-additional-packages '(keychain-environment)
+#+end_quote
+This should be combined with ssh-agent forwarding by configuring the Host entry in **~/.ssh/config** with
+#+begin_quote
+   ForwardAgent yes
+#+end_quote
+This allows the remote server to use your local ssh-agent identification when connecting to other external servers, e.g. gitHub.

@@ -506,6 +506,10 @@ before packages are loaded."
 
   (setq org-use-speed-commands t)
 
+  ;; Set path to git on remote servers, by executing .profile
+  (require 'tramp)
+  (add-to-list 'tramp-remote-path 'tramp-own-remote-path)
+
   )
 ;; end dotspacemacs/user-config
 
