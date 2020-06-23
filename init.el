@@ -58,6 +58,8 @@ This function should only modify configuration layer settings."
      ;; spell-checking
      ;; syntax-checking
      ;; version-control
+     (theming :variables
+              theming-headings-same-size 'all)
      treemacs
      )
 
