@@ -507,10 +507,14 @@ before packages are loaded."
   (add-hook 'org-mode-hook #'visual-line-mode)
   (add-hook 'text-mode-hook #'visual-line-mode)
 
+  ;; org-mode settings
   (setq org-use-speed-commands t)
+
+  ;; org-journal settings
   (setq org-journal-dir "~/notes/journal/")
-  (setq org-journal-file-type 'monthly)
   (setq org-journal-date-format "%A, %B %d %Y")
+  (setq org-journal-file-type 'monthly)
+  (setq org-journal-file-header "#+TITLE: Monthly Journal\n#+STARTUP: folded\n")
 
   ;; Set path to git on remote servers, by executing .profile
   (require 'tramp)
