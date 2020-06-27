@@ -42,7 +42,8 @@ This function should only modify configuration layer settings."
      ;; better-defaults
      emacs-lisp
      helm
-     org
+     (org :variables
+          org-enable-org-journal-support t)
      ;; Extension layers and language support
      ;; '''''''''''''''''''''''''''''''''''''
      csv
@@ -507,6 +508,9 @@ before packages are loaded."
   (add-hook 'text-mode-hook #'visual-line-mode)
 
   (setq org-use-speed-commands t)
+  (setq org-journal-dir "~/notes/journal/")
+  (setq org-journal-file-type 'monthly)
+  (setq org-journal-date-format "%A, %B %d %Y")
 
   ;; Set path to git on remote servers, by executing .profile
   (require 'tramp)
@@ -518,3 +522,47 @@ before packages are loaded."
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
+(defun dotspacemacs/emacs-custom-settings ()
+  "Emacs custom settings.
+This is an auto-generated function, do not modify its content directly, use
+Emacs customize menu instead.
+This function is called at the very end of Spacemacs initialization."
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(org-agenda-files (quote ("~/notes/work_notes/work.org"))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(font-latex-sectioning-0-face ((t (:height 1.0))))
+ '(font-latex-sectioning-1-face ((t (:height 1.0))))
+ '(font-latex-sectioning-2-face ((t (:height 1.0))))
+ '(font-latex-sectioning-3-face ((t (:height 1.0))))
+ '(font-latex-sectioning-4-face ((t (:height 1.0))))
+ '(font-latex-sectioning-5-face ((t (:height 1.0))))
+ '(font-latex-slide-title-face ((t (:height 1.0))))
+ '(info-title-1 ((t (:height 1.0))))
+ '(info-title-2 ((t (:height 1.0))))
+ '(info-title-3 ((t (:height 1.0))))
+ '(info-title-4 ((t (:height 1.0))))
+ '(markdown-header-face ((t (:height 1.0))))
+ '(markdown-header-face-1 ((t (:height 1.0))))
+ '(markdown-header-face-2 ((t (:height 1.0))))
+ '(markdown-header-face-3 ((t (:height 1.0))))
+ '(markdown-header-face-4 ((t (:height 1.0))))
+ '(markdown-header-face-5 ((t (:height 1.0))))
+ '(markdown-header-face-6 ((t (:height 1.0))))
+ '(org-document-title ((t (:height 1.0))))
+ '(org-level-1 ((t (:height 1.0))))
+ '(org-level-2 ((t (:height 1.0))))
+ '(org-level-3 ((t (:height 1.0))))
+ '(org-level-4 ((t (:height 1.0))))
+ '(org-level-5 ((t (:height 1.0))))
+ '(org-level-6 ((t (:height 1.0))))
+ '(org-level-7 ((t (:height 1.0))))
+ '(org-level-8 ((t (:height 1.0)))))
+)
