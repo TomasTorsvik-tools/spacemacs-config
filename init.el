@@ -514,16 +514,25 @@ before packages are loaded."
   (add-to-list 'tramp-remote-path 'tramp-own-remote-path)
 
   ;; org-mode settings
-  ;; Speed commands should give quick key options, e.g. "t" for TODO
-  (setq org-use-speed-commands t)
-  ;; Set soft line wrapping in org mode by "visual-line-mode"
-  (add-hook 'org-mode-hook #'visual-line-mode)
+  ;; To avoid autoloading of org functions, call all org options
+  ;; inside "with-eval-after-load"
+  (with-eval-after-load 'org
+    ;; Speed commands should give quick key options, e.g. "t" for TODO
+    (setq org-use-speed-commands t)
+    ;; Set soft line wrapping in org mode by "visual-line-mode"
+    (add-hook 'org-mode-hook #'visual-line-mode)
 
-  ;; org-journal settings
-  (setq org-journal-dir "~/notes/journal/")
-  (setq org-journal-date-format "%A, %B %d %Y")
-  (setq org-journal-file-type 'monthly)
-  (setq org-journal-file-header "#+TITLE: Monthly Journal\n#+STARTUP: folded\n")
+    ;; org-journal settings
+    (setq org-journal-dir "~/notes/journal/")
+    (setq org-journal-date-format "%A, %B %d %Y")
+    (setq org-journal-file-type 'monthly)
+    (setq org-journal-file-header "#+TITLE: Monthly Journal\n#+STARTUP: folded\n")
+
+    ;; Integrate org-journal with agenda
+    (setq org-journal-enable-agenda-integration t)
+    ;;(setq org-agenda-file-regexp "\\`[^.].*\\.org'\\|[0-9]+$")
+    ;;(add-to-list 'org-agenda-files org-journal-dir)
+  )
 
   )
 ;; end dotspacemacs/user-config
