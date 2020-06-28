@@ -504,21 +504,26 @@ configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
 
-  (add-hook 'org-mode-hook #'visual-line-mode)
+  ;; Text mode settings
+  ;; Set soft line wrapping in text mode by "visual-line-mode"
   (add-hook 'text-mode-hook #'visual-line-mode)
 
+  ;; Tramp settings
+  ;; Set path to git on remote servers, by executing .profile
+  (require 'tramp)
+  (add-to-list 'tramp-remote-path 'tramp-own-remote-path)
+
   ;; org-mode settings
+  ;; Speed commands should give quick key options, e.g. "t" for TODO
   (setq org-use-speed-commands t)
+  ;; Set soft line wrapping in org mode by "visual-line-mode"
+  (add-hook 'org-mode-hook #'visual-line-mode)
 
   ;; org-journal settings
   (setq org-journal-dir "~/notes/journal/")
   (setq org-journal-date-format "%A, %B %d %Y")
   (setq org-journal-file-type 'monthly)
   (setq org-journal-file-header "#+TITLE: Monthly Journal\n#+STARTUP: folded\n")
-
-  ;; Set path to git on remote servers, by executing .profile
-  (require 'tramp)
-  (add-to-list 'tramp-remote-path 'tramp-own-remote-path)
 
   )
 ;; end dotspacemacs/user-config
