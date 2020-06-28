@@ -532,10 +532,26 @@ before packages are loaded."
     (setq org-journal-enable-agenda-integration t)
     ;;(setq org-agenda-file-regexp "\\`[^.].*\\.org'\\|[0-9]+$")
     ;;(add-to-list 'org-agenda-files org-journal-dir)
-  )
 
+    ;; Set org-capture to write to current journal file.
+    ;; First define function to find journal location
+    (defun org-journal-find-location ()
+      ;; Open today's journal, but specify a non-nil prefix argument in order to
+      ;; inhibit inserting the heading; org-capture will insert the heading.
+      (org-journal-new-entry t)
+      ;; Position point on the journal's top-level heading so that org-capture
+      ;; will add the new entry as a child entry.
+      (goto-char (point-min)))
+
+    (setq org-capture-templates
+          '(("j" "Journal entry" entry (function org-journal-find-location)
+          "* %(format-time-string org-journal-time-format)%^{Title}\n%i%?")))
+
+    ;; end org-mode settings
+    )
+
+  ;; end dotspacemacs/user-config
   )
-;; end dotspacemacs/user-config
 
 
 ;; Do not write anything past this comment. This is where Emacs will
